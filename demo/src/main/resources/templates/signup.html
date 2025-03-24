@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="signupstyle.css" rel="stylesheet"/>
+    <title>Sign Up</title>
+</head>
+<body>
+<header>
+    <a href="index.html"
+    ><img alt="Home" height="50px" src="photos/homes.png" width="50px"
+    /></a>
+</header>
+<script>
+    function isValid(e) {
+
+      if (
+        document.getElementsByName("password")[0].value !=
+        document.getElementsByName("confirm_password")[0].value
+      ) {
+        alert("Passwords do not match");
+        e.preventDefault();
+      }
+
+      return;
+    }
+</script>
+<div>
+    <h1>Sign Up</h1>
+    <form action="#" method="post" onsubmit="return isValid()" th:action="@{/signup}" th:object="${data}">
+        <link href="contactusstyle.css" rel="stylesheet"/>
+
+        <label>First Name</label>
+        <input pattern="[^' ']+" required th:field="*{firstName}" type="text"/>
+        <label>Last Name</label>
+        <input pattern="[^' ']+" required th:field="*{lastName}" type="text"/>
+        <label>Username</label>
+        <input pattern="[^' ']+" required th:field="*{username}" type="text"/>
+        <label>Email</label>
+        <input required th:field="*{email}" type="email"/>
+        <label>Password</label>
+        <input placeholder="" required th:field="*{password}" type="password"/>
+        <label>Confirm Password</label>
+        <input placeholder="" required th:field="*{confirmPassword}" type="password"/>
+
+        <input type="submit" value="Submit"/>
+    </form>
+
+    <p>
+        By clicking the Sign Up button, you agree to our <br/>
+        <a href="#">Terms and Conditions</a> and
+        <a href="#">Policy and Privacy</a>
+    </p>
+</div>
+<p class="para-2">
+    Already have an account? <a href="login.html">Login here</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>BuyBay - Sell Item</title>
+    <link href="SellStyle.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+    <a href="index.html"><img alt="Home" height="50px" src="photos/homes.png" width="50px"></a>
+</header>
+<div class="container">
+    <h1>Sell Your Item</h1>
+    <form action="#" enctype="multipart/form-data" id="sellForm" method="post"
+          th:action="@{/Sell}" th:object="${data}">
+        <div class="form-group">
+            <label for="name">Item Name:</label>
+            <input id="name" required th:field="*{name}" type="text">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" required th:field="*{description}"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Images:</label>
+            <input accept="image/*" id="files" multiple="multiple" required th:field="*{files}"
+                   type="file">
+        </div>
+        <div class="form-group">
+            <label for="cost">Cost ($):</label>
+            <input id="cost" min="0.01" required step="0.01" th:field="*{cost}" type="number">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>

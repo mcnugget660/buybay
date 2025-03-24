@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Product Description</title>
+    <link href="product.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <a href="index.html"
+    ><img alt="Home" height="50px" src="../photos/homes.png" width="50px"
+    /></a>
+</header>
+<label th:unless="${product}">Product does not exist</label>
+<div class="container" th:if="${product}">
+    <h2 class="product-name" th:utext="${product.getName()}"></h2>
+    <img alt="Error" th:src="@{${'/getImage?id=' + product.getID() +'&number=0'}}"/>
+    <h1 class="product-title">Product Description</h1>
+    <p class="product-description" th:utext="${product.getDescription()}"></p>
+    <p class="product-price" th:utext="${product.getPrice()}"></p>
+    <a class="product-button" href="#">Buy Now</a>
+    <a class="product-button" href="#">Add to Cart</a>
+</div>
+</body>
+</html>

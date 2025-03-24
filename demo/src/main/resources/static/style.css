@@ -1,0 +1,132 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  
+}
+
+.error {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.login img {
+  border-radius: 50%;
+  border: 5px solid #555;
+}
+
+login {
+    max-height : 100px;
+}
+
+.logo {
+  width: 200px;
+}
+
+.login {
+  margin-right: 20px;
+}
+
+.login a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.login div {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.login img {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.login form {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.login img {
+  width : 60px;
+  height : 60px;
+}
+
+main {
+  margin-top: 20px;
+}
+
+.welcome {
+  text-align: center;
+  margin-top: 20px;
+  
+}
+
+.welcome h1 {
+  font-size: 36px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.login {
+  display: flex;
+  gap: 1rem;
+}
+
+.login a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.login div {
+  text-decoration: none;
+  color: #fff;
+}
+
+.login img {
+  text-decoration: none;
+  color: #fff;
+}
+
+input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+input[type="submit"] {
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+}
+
+footer {
+  background-color: #333;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+}
+```color: #333;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+}
+
+
+

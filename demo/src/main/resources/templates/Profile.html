@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>User Profile</title>
+    <link href="ProfileStyle.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <a href="index.html"
+    ><img alt="Home" height="50px" src="photos/homes.png" width="50px"
+    /></a>
+</header>
+<div class="container">
+    <h1>User Profile</h1>
+    <div class="profile-info">
+        <form action="/Home" enctype="multipart/form-data" method="post">
+            <div>
+                <label for="email">Email:</label>
+                <input id="email" th:value="${user.getEmail()}" type="email">
+            </div>
+            <div>
+                <label for="password">New Password:</label>
+                <input id="password" placeholder="Enter new password" type="password">
+            </div>
+            <div>
+                <label for="confirmPassword">Confirm Password:</label>
+                <input id="confirmPassword" placeholder="Confirm new password" type="password">
+            </div>
+            <div>
+                <label for="pfp">Profile Picture:</label>
+                <input id="pfp" name="pfp" type="file">
+                <img alt="Profile Picture" id="previewImage" th:src="@{${'/getPfp?username=' + user.getUsername()}}">
+            </div>
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+    <div class="listed-products">
+        <h2>Listed Products</h2>
+        <ul id="productList">
+            <tr th:each="product : ${products}">
+                <h2 class="product-name" th:utext="${product.getName()}"></h2>
+                <img alt="Error" th:src="@{${'/getImage?id=' + product.getID() +'&number=0'}}"/>
+                <h1 class="product-title">Product Description</h1>
+                <p class="product-description" th:utext="${product.getDescription()}"></p>
+                <p class="product-price" th:utext="${product.getPrice()}"></p>
+            </tr>
+        </ul>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

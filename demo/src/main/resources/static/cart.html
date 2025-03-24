@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuyBay - Cart</title>
+    <link rel="stylesheet" type="text/css" href="CartStyle.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <a href="Products.html"><img src="photos/back.png" alt="Home" width="50px" height="50px"></a>
+    </header>
+
+    <h1>Shopping Cart</h1>
+    <div id="cartItems"></div>
+    <div id="totalPrice"></div>
+</div>
+
+<script>
+    // Function to display cart items
+    function displayCartItems() {
+        var cartItemsContainer = document.getElementById('cartItems');
+        var totalPriceContainer = document.getElementById('totalPrice');
+        var totalPrice = 0;
+
+        cartItemsContainer.innerHTML = '';
+        totalPriceContainer.innerHTML = '';
+
+        // Retrieve cart items from local storage
+        var cartItems = JSON.parse(localStorage.getItem('cart'));
+
+        if (cartItems && cartItems.length > 0) {
+            cartItems.forEach(function(item) {
+                var itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <div class="item-info">
+                        <img src="/getImage?id=${item.id}&number=0" alt="${item.name}" class="product-image">
+                        <div class="product-details">
+                            <p class="product-name">${item.name}</p>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="decreaseQuantity(${item.id})">-</button>
+                                <span class="quantity">${item.quantity}</span>
+                                <button class="quantity-btn" onclick="increaseQuantity(${item.id})">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="product-price">$${item.price * item.quantity}</p>
+                    <button class="remove-btn" onclick="removeItem(${item.id})">Remove</button>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+                totalPrice += item.price * item.quantity;
+            });
+        } else {
+            cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        }
+
+        totalPriceContainer.innerHTML = `<p>Total Price: $${totalPrice}</p>`;
+    }
+
+    // Function to remove item from cart
+    function removeItem(productId) {
+        var cartItems = JSON.parse(localStorage.getItem('cart'));
+        cartItems = cartItems.filter(item => item.id !== productId);
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        displayCartItems();
+    }
+
+    // Function to increase quantity
+    function increaseQuantity(productId) {
+        var cartItems = JSON.parse(localStorage.getItem('cart'));
+        var itemIndex = cartItems.findIndex(item => item.id === productId);
+        cartItems[itemIndex].quantity++;
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        displayCartItems();
+    }
+
+    // Function to decrease quantity
+    function decreaseQuantity(productId) {
+        var cartItems = JSON.parse(localStorage.getItem('cart'));
+        var itemIndex = cartItems.findIndex(item => item.id === productId);
+        if (cartItems[itemIndex].quantity > 1) {
+            cartItems[itemIndex].quantity--;
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            displayCartItems();
+        }
+    }
+
+    // Display cart items on page load
+    displayCartItems();
+</script>
+</body>
+<div id="Cart" class="tabcontent">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+
+        header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ffffff;
+    color: #fff; /* Change the text color to white */
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+      body {
+        font-family: Arial;
+        font-size: 17px;
+        padding: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .row {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        margin: 0 -16px;
+      }
+
+      .col-25 {
+        -ms-flex: 25%; /* IE10 */
+        flex: 25%;
+      }
+
+      .col-50 {
+        -ms-flex: 50%; /* IE10 */
+        flex: 50%;
+      }
+
+      .col-75 {
+        -ms-flex: 75%; /* IE10 */
+        flex: 75%;
+      }
+
+      .col-25,
+      .col-50,
+      .col-75 {
+        padding: 0 16px;
+      }
+
+      .container {
+        background-color: #f2f2f2;
+        padding: 5px 20px 15px 20px;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+      }
+      }
+      .quantity-btn {
+          width: 25px; /* Adjust the width to your desired size */
+          height: 20px; /* Adjust the height to your desired size */
+      }
+
+      input[type=text] {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      .h2 {
+            text-align: center;
+            display: flex;
+    align-items: center;
+      }
+
+
+      label {
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .icon-container {
+        margin-bottom: 20px;
+        padding: 7px 0;
+        font-size: 24px;
+      }
+
+      .btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border: none;
+        width: 100%;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 17px;
+      }
+
+      .btn:hover {
+        background-color: #45a049;
+      }
+
+      a {
+        color: #2196F3;
+      }
+
+      hr {
+        border: 1px solid lightgrey;
+      }
+
+      span.price {
+        float: right;
+        color: grey;
+
+      }
+    </style>
+    </head>
+    <body>
+    <div class="row">
+        <div class="col-75">
+            <div class="container">
+                <form action="/action_page.php">
+
+                    <div class="row">
+                        <div class="col-50">
+                            <h3>Billing Address</h3>
+                            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="Grant W. Garrison">
+                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                            <input type="text" id="email" name="email" placeholder="garrigra001@mysbisd.org">
+                            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                            <input type="text" id="adr" name="address" placeholder="7938 Wellington Ct S">
+                            <label for="city"><i class="fa fa-institution"></i> City</label>
+                            <input type="text" id="city" name="city" placeholder="Houston">
+
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="state">State</label>
+                                    <input type="text" id="state" name="state" placeholder="TX">
+                                </div>
+                                <div class="col-50">
+                                    <label for="zip">Zip</label>
+                                    <input type="text" id="zip" name="zip" placeholder="12345">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-50">
+                            <h3>Payment</h3>
+                            <label for="fname">Accepted Cards</label>
+                            <div class="icon-container">
+                                <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                <i class="fa fa-cc-discover" style="color:orange;"></i>
+                            </div>
+                            <label for="cname">Name on Card</label>
+                            <input type="text" id="cname" name="cardname" placeholder="Grant Walker Garrison">
+                            <label for="ccnum">Credit card number</label>
+                            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                            <label for="expmonth">Exp Month</label>
+                            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="expyear">Exp Year</label>
+                                    <input type="text" id="expyear" name="expyear" placeholder="2027">
+                                </div>
+                                <div class="col-50">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <label>
+                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                    </label>
+                    <input type="submit" value="Continue to checkout" class="btn">
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function openPage(pageName,elmnt,color) {
+              var i, tabcontent, tablinks;
+              tabcontent = document.getElementsByClassName("tabcontent");
+              for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+              }
+              tablinks = document.getElementsByClassName("tablink");
+              for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+              }
+              document.getElementById(pageName).style.display = "block";
+              elmnt.style.backgroundColor = color;
+            }
+
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+        </script>
+
+    </div>
+
+    <script>
+        function openPage(pageName,elmnt,color) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablink");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+          }
+          document.getElementById(pageName).style.display = "block";
+          elmnt.style.backgroundColor = color;
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+    </body>
+</html>

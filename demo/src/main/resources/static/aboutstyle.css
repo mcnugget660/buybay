@@ -1,0 +1,98 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: #000000;
+  padding: 10px;
+  text-align: center; /* Center the title */
+  
+  
+}
+
+h1{
+  text-align: center;
+  padding-top: 15px;
+  background-color: #333;
+  color: #ffffff;
+  padding: 1px;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0.25%;
+
+}
+
+.header-title {
+  font-size: 36px;
+  text-align: center; /* Center the title */
+  margin: 0 auto; /* Center the title horizontally */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the text horizontally */
+  flex-direction: column; /* Center the text vertically */
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 700px; /* Make the boxes wider */
+  height: 250px; /* Make the boxes taller */
+}
+
+.person img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.person-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 400px; /* Adjust the width as needed */
+  padding: 70px 0;
+  border: 3px solid green;
+  text-align: center;
+}
+
+.person h2 {
+  font-size: 24px;
+  margin-bottom: 5px;
+  width: 200px; /* Adjust the width as needed */
+  text-align: center;
+}
+
+.person p {
+  font-size: 16px;
+  color: #777;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  width: 300px; /* Adjust the width as needed */
+  height: 150px; /* Adjust the height as needed */
+  
+}
+
+.person:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+
+

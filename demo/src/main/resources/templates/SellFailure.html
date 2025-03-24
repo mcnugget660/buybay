@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Failure</title>
+</head>
+
+<body>
+<header>
+    <a href="index.html"><img alt="Home" height="50px" src="photos/homes.png" width="50px"></a>
+</header>
+<span th:unless="${validsuccess}">You are not signed in!</span>
+<div class="container">
+    <h1>Sell Your Item</h1>
+    <form id="sellForm" onsubmit="submitItem(event)">
+        <div class="form-group">
+            <label for="itemName">Item Name:</label>
+            <input id="itemName" required type="text">
+        </div>
+        <div class="form-group">
+            <label for="itemDescription">Description:</label>
+            <textarea id="itemDescription" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="itemImage">Images:</label>
+            <input accept="image/*" id="itemImage" multiple required type="file">
+        </div>
+        <div class="form-group">
+            <label for="itemCost">Cost ($):</label>
+            <input id="itemCost" min="0.01" required step="0.01" type="number">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    function submitItem(event) {
+        event.preventDefault();
+
+        var itemName = document.getElementById('itemName').value;
+        var itemDescription = document.getElementById('itemDescription').value;
+        var itemImages = document.getElementById('itemImage').files;
+        var itemCost = parseFloat(document.getElementById('itemCost').value);
+
+        // Create a new product object
+        var newItem = {
+            name: itemName,
+            description: itemDescription,
+            images: itemImages,
+            price: itemCost
+        };
+
+        // Send the product to the server
+        window.post = function(url, data) {
+         return fetch(url, {method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)});
+        }
+   };
+
+  xhr.send(JSON.stringify(data));
+
+        // Redirect to the products page
+        window.location.href = 'Products.html';
+    }
+</script>
+</body>
+</html>

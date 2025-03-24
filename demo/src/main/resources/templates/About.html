@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html>
+<head>
+    <title>About Us</title>
+    <link href="aboutstyle.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img alt="BuyBay" height="100px" src="photos/logo.png" width="175px">
+    </div>
+    <div class="login">
+        <a href="Home.html" th:if="${validSession}">Home</a>
+        <a href="Products.html">Products</a>
+        <a href="About.html">About Us</a>
+        <a href="ContactUs.html">Contact Us</a>
+        <div class="signedIn" th:unless="${validSession}">
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign Up</a>
+        </div>
+        <a href="MessageCenter.html">Message Center</a>
+        <a href="Sell.html" th:if="${validSession}">Sell Items</a>
+        <div class="signedIn" th:if="${validSession}">
+            <img alt="Avatar" onclick="window.location.href = 'Home.html';"
+                 th:src="@{${'/getPfp?username=' + user.getUsername()}}">
+            <form action="/signout" method="get">
+                <button>Sign Out</button>
+            </form>
+        </div>
+    </div>
+</header>
+<h1 class="about-title">About Us</h1>
+
+<div class="person">
+    <img alt="Person 1" src="photos/person1.jpg">
+    <h2>Avar Sulaiman</h2>
+    <p>Coder</p>
+</div>
+
+<div class="person">
+    <img alt="Person 1" src="photos/person2.jpg">
+    <h2>Tyler Martin Getz</h2>
+    <p>Coder</p>
+</div>
+
+<div class="person">
+    <img alt="Person 3" src="photos/person3.jpg">
+    <h2>Conrad Slot</h2>
+    <p>Coder</p>
+</div>
+
+<div class="person">
+    <img alt="Person 4" src="photos/person4.jpg">
+    <h2>Judy Yang</h2>
+    <p>Coder</p>
+</div>
+</body>
+</html>

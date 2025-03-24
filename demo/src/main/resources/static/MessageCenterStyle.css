@@ -1,0 +1,99 @@
+/* Existing CSS from MessageCenterStyle.css */
+{
+  align-items: center;
+
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  color: #fff; /* Change the text color to white */
+  padding: 10px;
+  margin-top: 0%;
+}
+
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      align-items: center;
+
+    }
+
+    .chat-container {
+        width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .chat-messages {
+        height: 300px;
+        overflow-y: scroll;
+        padding: 10px;
+    }
+    .message-icon{
+        border-radius: 50%;
+        border: 5px solid #555;
+        width : 60px;
+        height : 60px;
+    }
+
+    .message {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        background-color: #e0e0e0;
+    }
+
+    .message-sender {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .message-content {
+        margin-left: 10px;
+    }
+
+    .message-input {
+        width: calc(100% - 80px);
+        padding: 10px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .send-button {
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .clear-button {
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+/* New CSS added to MessageCenterStyle.css */
+
+.chat-container {
+  margin: 150px auto; /* Centers the container vertically and horizontally */
+  width: 500px; /* Adjust the width as needed */
+}
