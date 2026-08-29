@@ -178,6 +178,11 @@ public class ProductManager {
         return output;
     }
 
+    public void removeFromCart(String user, int ID) {
+        if (userCart.containsKey(user))
+            userCart.get(user).remove(ID);
+    }
+
     // [start, end)
     public ArrayList<Product> returnProducts(int start, int end) {
         ArrayList<Product> output = new ArrayList<>();
